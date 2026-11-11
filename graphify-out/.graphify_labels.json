@@ -1,0 +1,17 @@
+{
+  "0": "Storefront Client UI & Chat",
+  "1": "Product Crawler & Flagship Scripts",
+  "2": "Testing Framework & Node Refs",
+  "3": "Admin Portal Management & UI",
+  "4": "Core ADRs & System Architecture",
+  "6": "Admin & Storefront HTML Templates",
+  "7": "Core Domain Models & Crypto",
+  "8": "Customer Controller & Auth",
+  "9": "JsonDB Engine & Storage",
+  "10": "Admin Controller & CRM Operations",
+  "11": "Order Lifecycle & Controller",
+  "13": "Agent Guidelines & Workflow Rules",
+  "18": "Storefront Redesign & Taste Skill ADRs",
+  "20": "Product Specification & Positioning",
+  "24": "Vercel Serverless Configuration"
+}
