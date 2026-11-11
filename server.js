@@ -49,6 +49,11 @@ app.get('/customer-portal', (req, res) => {
   return res.sendFile(path.join(__dirname, 'src', 'public', 'index.html'));
 });
 
+// Điều hướng Trang Cài Đặt Khách Hàng / Hồ Sơ Sinh Viên (Customer Settings Page)
+app.get(['/settings', '/settings.html', '/profile', '/profile.html', '/user-settings'], (req, res) => {
+  return res.sendFile(path.join(__dirname, 'src', 'public', 'settings.html'));
+});
+
 // Điều hướng & bảo vệ truy cập trang Admin
 app.use(async (req, res, next) => {
   if (req.path === '/admin' || req.path === '/admin.html') {

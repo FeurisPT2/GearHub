@@ -11,7 +11,8 @@
     <script>
         document.documentElement.classList.add('js');
         (function() {
-            const saved = localStorage.getItem('techstore_theme');
+            const urlTheme = new URLSearchParams(window.location.search).get('theme');
+            const saved = (urlTheme === 'dark' || urlTheme === 'light') ? urlTheme : localStorage.getItem('techstore_theme');
             const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
             document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
         })();
@@ -82,6 +83,12 @@
                 <div class="user-profile-pill" id="user-profile-badge" style="display: none;">
                     <span class="user-avatar-dot" id="user-avatar-initial">K</span>
                     <button class="user-name-btn" id="user-display-name" onclick="openCustomerPortal('profile')">Khách</button>
+                    <a href="/settings" class="user-settings-btn" id="btn-user-settings" title="Cài đặt tài khoản sinh viên" style="display:inline-flex; align-items:center; color:var(--muted); padding: 0 4px;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </a>
                     <button class="user-orders-btn" id="btn-user-orders" onclick="openCustomerPortal('orders')">Đơn đặt</button>
                     <button class="user-logout-btn" id="btn-logout-cust" onclick="logoutCustomer()" title="Đăng xuất">Thoát</button>
                 </div>
@@ -122,6 +129,7 @@
             <button class="drawer-item" onclick="resetAllFilters(); toggleMobileDrawer(false);"> Bảng Dịch Vụ &amp; Thiết Bị</button>
             <button class="drawer-item" onclick="openCustomerPortal('track'); toggleMobileDrawer(false);"> Tra Cứu Lịch Hẹn Trạm</button>
             <button class="drawer-item" onclick="openCustomerPortal('orders'); toggleMobileDrawer(false);"> Lịch Hẹn Của Tôi</button>
+            <a href="/settings" class="drawer-item" onclick="toggleMobileDrawer(false);"> Cài Đặt Hồ Sơ Sinh Viên</a>
             <button class="drawer-item" onclick="toggleAiChat(); toggleMobileDrawer(false);"> Trợ Lý Kỹ Thuật AI</button>
             <p class="drawer-section-title">Danh mục trạm sảnh C</p>
             <div class="drawer-brand-grid">

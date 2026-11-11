@@ -240,4 +240,57 @@ describe('Customer Self-Service Portal: Guest Tracking, Profile Update, Wishlist
     assert.equal(mockReq.session.customer.passwordHash, undefined);
     assert.equal(mockReq.currentCustomer.passwordHash, undefined);
   });
+
+  test('Customer Settings Page & Change Password workflow', async () => {
+    // 1. Verify GET /settings and GET /profile returns 200 HTML
+    const settingsRes = await fetch(`${baseUrl}/settings`);
+    assert.equal(settingsRes.status, 200);
+    const settingsHtml = await settingsRes.text();
+    assert.ok(settingsHtml.includes('Cài Đặt Tài Khoản · GearHub'));
+
+    const profileRes = await fetch(`${baseUrl}/profile`);
+    assert.equal(profileRes.status, 200);
+
+    // 2. Unauthenticated change-password returns 401
+    const unauthRes = await fetch(`${baseUrl}/api/customers/change-password`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ oldPassword: 'password123', newPassword: 'newpassword456' })
+    });
+    assert.equal(unauthRes.status, 401);
+
+    // 3. Authenticated change-password with wrong oldPassword returns 400
+    const wrongOldRes = await fetch(`${baseUrl}/api/customers/change-password`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Cookie: custCookie
+      },
+      body: JSON.stringify({ oldPassword: 'wrongpass', newPassword: 'newpassword456' })
+    });
+    assert.equal(wrongOldRes.status, 400);
+
+    // 4. Authenticated change-password with valid credentials succeeds
+    const changeRes = await fetch(`${baseUrl}/api/customers/change-password`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Cookie: custCookie
+      },
+      body: JSON.stringify({ oldPassword: 'password123', newPassword: 'newpassword456' })
+    });
+    const changeData = await changeRes.json();
+    assert.equal(changeRes.status, 200);
+    assert.equal(changeData.success, true);
+
+    // 5. Verify customer can login with new password
+    const newLoginRes = await fetch(`${baseUrl}/api/customers/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone: testPhone, password: 'newpassword456' })
+    });
+    const newLoginData = await newLoginRes.json();
+    assert.equal(newLoginRes.status, 200);
+    assert.equal(newLoginData.success, true);
+  });
 });

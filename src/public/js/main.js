@@ -779,6 +779,10 @@ let searchScrollTimer = null;
 function scrollToCatalog() {
   const section = document.getElementById('catalog-section');
   if (!section) return;
+  if (currentSearch) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
   const rect = section.getBoundingClientRect();
   // Scroll if section heading is not already in the upper reading zone
   if (rect.top > 130 || rect.top < -40) {
@@ -937,6 +941,31 @@ function escapeHtml(str) {
 function renderProductList() {
   const container = document.getElementById('product-list');
   if (!container) return;
+
+  const isSearching = Boolean(currentSearch && currentSearch.trim().length > 0);
+  const heroSection = document.getElementById('hero-section');
+  const uspSection = document.querySelector('.usp-recognition-section');
+  const headlineEl = document.querySelector('#catalog-section .section-headline');
+
+  if (document.body) {
+    document.body.classList.toggle('is-searching', isSearching);
+  }
+  if (heroSection) {
+    heroSection.style.display = isSearching ? 'none' : '';
+  }
+  if (uspSection) {
+    uspSection.style.display = isSearching ? 'none' : '';
+  }
+  if (headlineEl) {
+    if (isSearching) {
+      if (!headlineEl.dataset.defaultTitle) {
+        headlineEl.dataset.defaultTitle = headlineEl.innerText;
+      }
+      headlineEl.innerText = `Kết quả tìm kiếm cho "${currentSearch}"`;
+    } else if (headlineEl.dataset.defaultTitle) {
+      headlineEl.innerText = headlineEl.dataset.defaultTitle;
+    }
+  }
 
   updateBreadcrumbAndChips();
 

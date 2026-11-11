@@ -4,6 +4,7 @@ const c = require('../controllers/customerController');
 
 router.get('/profile', c.getProfile);
 router.put('/profile', c.updateProfile);
+router.put('/change-password', c.changePassword);
 router.get('/wishlist', c.getWishlist);
 router.post('/wishlist', c.toggleWishlist);
 router.get('/lookup', c.lookup);

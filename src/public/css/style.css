@@ -4052,5 +4052,28 @@ html.js .faq-item[data-reveal].in:hover {
     transform: scale(0.97) !important;
 }
 
+/* ==========================================================================
+   DYNAMIC SEARCH VIEW STATE: Instant results flush under header
+   ========================================================================== */
+body.is-searching #hero-section,
+body.is-searching .usp-recognition-section {
+    display: none !important;
+}
+
+body.is-searching .catalog-section {
+    padding-top: clamp(1rem, 2vw, 1.75rem) !important;
+}
+
+body.is-searching .quick-presets-bar,
+body.is-searching .filter-bar {
+    display: none !important;
+}
+
+body.is-searching .active-filter-chips {
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+
 
 

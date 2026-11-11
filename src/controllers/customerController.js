@@ -3,7 +3,10 @@ const OrderModel = require('../models/Order');
 const ProductModel = require('../models/Product');
 
 exports.getProfile = async (req, res) => {
-  const sessionCust = req.currentCustomer || req.session?.customer;
+  let sessionCust = req.currentCustomer || req.session?.customer;
+  if (!sessionCust && req.query.phone) {
+    sessionCust = await CustomerModel.findByPhone(req.query.phone);
+  }
   if (!sessionCust) {
     return res.json({ loggedIn: false, remembered: false, data: null });
   }
@@ -37,6 +40,23 @@ exports.updateProfile = async (req, res) => {
       success: true,
       message: 'Cập nhật hồ sơ & sổ địa chỉ thành công!',
       customer: updated
+    });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
+};
+
+exports.changePassword = async (req, res) => {
+  try {
+    const sessionCust = req.currentCustomer || req.session?.customer;
+    if (!sessionCust) {
+      return res.status(401).json({ success: false, message: 'Vui lòng đăng nhập để đổi mật khẩu' });
+    }
+    const { oldPassword, newPassword } = req.body;
+    await CustomerModel.changePassword(sessionCust.id, { oldPassword, newPassword });
+    res.json({
+      success: true,
+      message: 'Đổi mật khẩu tài khoản thành công!'
     });
   } catch (err) {
     res.status(400).json({ success: false, message: err.message });

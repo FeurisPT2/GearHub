@@ -192,6 +192,26 @@ class CustomerModel {
     return this.toSafeCustomer(created);
   }
 
+  static async changePassword(id, { oldPassword, newPassword }) {
+    if (!id || !oldPassword || !newPassword) {
+      throw new Error('Vui lòng cung cấp mật khẩu cũ và mật khẩu mới');
+    }
+    if (newPassword.length < 6) {
+      throw new Error('Mật khẩu mới phải có ít nhất 6 ký tự');
+    }
+    const customer = await customerStorage.findById(id);
+    if (!customer) {
+      throw new Error('Không tìm thấy tài khoản khách hàng');
+    }
+    const oldHash = hashPassword(oldPassword);
+    if (customer.passwordHash && customer.passwordHash !== oldHash) {
+      throw new Error('Mật khẩu hiện tại không chính xác');
+    }
+    const newHash = hashPassword(newPassword);
+    const updated = await customerStorage.update(id, { passwordHash: newHash });
+    return this.toSafeCustomer(updated);
+  }
+
   static async updateCustomer(id, data) {
     const existing = await this.findById(id);
     if (!existing) return null;
