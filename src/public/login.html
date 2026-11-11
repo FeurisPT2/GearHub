@@ -478,24 +478,39 @@
 
         @media (max-width: 960px) {
             .login-stage {
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
             }
-            .login-visual-col,
             .login-form-col {
-                grid-column: 1 / -1;
+                order: 1;
+                padding: clamp(1rem, 4vw, 2rem);
+            }
+            .login-visual-col {
+                order: 2;
+                padding: clamp(1rem, 4vw, 2rem);
             }
             .visual-object-frame {
-                height: 220px;
+                height: 180px;
             }
         }
 
         @media (max-width: 600px) {
+            .brand-bar {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .theme-label-text {
+                display: none;
+            }
             .form-row-2,
             .visual-perks-grid {
                 grid-template-columns: 1fr;
             }
             .portal-panel-box {
-                padding: 1.35rem;
+                padding: 1.25rem 1rem;
+            }
+            .login-headline {
+                font-size: 1.5rem;
             }
         }
     

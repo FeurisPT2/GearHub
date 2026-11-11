@@ -3715,55 +3715,254 @@ html.js .faq-item[data-reveal].in:hover {
 }
 
 @media (max-width: 640px) {
-    .mobile-menu-btn {
-        display: inline-flex;
-        width: 2.2rem;
-        height: 2.2rem;
-    }
-    .logo-sub,
-    .nav-action-btn .nav-label,
-    .search-kbd {
-        display: none;
+    /* 1. Sleek Mobile App Bar Header */
+    .main-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 14px -2px rgba(0, 0, 0, 0.08);
     }
     .header-inner {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-    .header-center {
-        order: 3;
-        flex: 1 1 100%;
-        max-width: 100%;
-        display: flex;
-        justify-content: flex-start;
-    }
-    .header-center .search-box {
-        width: 210px;
-        max-width: 100%;
-        transition: width 360ms cubic-bezier(0.16, 1, 0.3, 1),
-                    border-color 220ms ease,
-                    box-shadow 260ms ease,
-                    background-color 220ms ease;
-    }
-    .header-center:focus-within .search-box,
-    .header-center.is-expanded .search-box,
-    .header-inner.search-active .search-box {
-        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        gap: 8px 10px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        min-height: auto;
     }
     .header-left {
-        gap: 0.5rem;
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
+    .mobile-menu-btn {
+        display: inline-flex;
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+    .logo-mark {
+        width: 32px;
+        height: 32px;
+    }
+    .logo-brand {
+        font-size: 1.15rem !important;
+    }
+    .logo-sub,
+    .top-nav-links,
+    .search-kbd {
+        display: none !important;
+    }
+
     .header-actions {
-        gap: 0.35rem;
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        align-items: center;
+        gap: 6px;
     }
-    .nav-action-btn {
-        padding: 0.45rem 0.55rem;
+    /* Move secondary desktop items into hamburger drawer on mobile */
+    .header-actions #btn-customer-portal,
+    .header-actions #btn-open-wishlist,
+    .header-actions #btn-open-auth,
+    #user-profile-badge .user-orders-btn,
+    #user-profile-badge .user-logout-btn {
+        display: none !important;
+    }
+    .theme-toggle-btn {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+        border-radius: 10px;
     }
     .cart-btn-trigger {
-        padding: 0.45rem 0.7rem;
+        padding: 0.45rem 0.75rem;
+        min-height: 40px;
+        border-radius: 10px;
         gap: 0.35rem;
     }
-    .hero-headline {
-        font-size: var(--fs-h2);
+    .cart-btn-trigger span:first-of-type {
+        display: none; /* Hide 'Lịch đặt' text, keep cart icon & count pill */
+    }
+
+    /* Row 2: Full width modern search input */
+    .header-center {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        margin: 0;
+        display: block;
+    }
+    .header-center .search-box {
+        width: 100% !important;
+        height: 38px;
+        padding: 0 12px;
+        border-radius: 10px;
+        background: var(--surface-raised);
+    }
+    .header-center .search-box input {
+        font-size: 13.5px;
+    }
+
+    /* Horizontal smooth scrolling Category Ribbon */
+    .header-quick-ribbon {
+        padding: 4px 0 6px;
+        border-top: 1px solid var(--border-soft);
+    }
+    .quick-ribbon-inner {
+        padding: 0 12px;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+    .quick-ribbon-inner::-webkit-scrollbar {
+        display: none;
+    }
+    .ribbon-label {
+        display: none;
+    }
+    .ribbon-chip {
+        font-size: 12px;
+        padding: 5px 11px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        min-height: 32px;
+    }
+
+    /* 2. Hero Split Stage & Swatches */
+    .split-stage-section {
+        margin: 10px auto 18px !important;
+    }
+    .split-stage-wrap {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .split-left-sticky {
+        position: static !important;
+        padding: 12px !important;
+        border-radius: 18px !important;
+    }
+    .stage-image-frame {
+        min-height: 190px !important;
+        height: 190px !important;
+        max-height: 190px !important;
+        border-radius: 14px !important;
+    }
+    .stage-image-frame img {
+        max-height: 180px !important;
+    }
+    .stage-finish-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+    .swatch-group {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+    .swatch-btn {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        min-height: 28px;
+    }
+    .editorial-sub {
+        font-size: 0.72rem;
+    }
+    .editorial-title {
+        font-size: 1.45rem !important;
+        line-height: 1.2;
+        margin-bottom: 8px;
+    }
+    .editorial-desc {
+        font-size: 0.875rem;
+        line-height: 1.45;
+        margin-bottom: 12px;
+    }
+    .spec-list-block {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    .editorial-cta-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-top: 14px;
+    }
+    .btn-editorial-buy {
+        width: 100%;
+        text-align: center;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 3. Floating AI Chat Widget on Mobile (Floating Action Button) */
+    .ai-chat-widget {
+        bottom: 16px;
+        right: 16px;
+        z-index: 140;
+    }
+    .ai-chat-trigger {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    }
+    .ai-chat-trigger span:not(.live-indicator-dot) {
+        display: none; /* Hide label text on mobile, showing crisp FAB */
+    }
+    .ai-chat-trigger svg {
+        width: 22px;
+        height: 22px;
+    }
+    .ai-chat-window {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 85vh !important;
+        max-height: 85vh !important;
+        border-radius: 20px 20px 0 0 !important;
+        margin: 0 !important;
+        z-index: 200;
+    }
+    .ai-chat-messages {
+        max-height: calc(85vh - 130px) !important;
+    }
+
+    /* 4. Product Catalog & Cards */
+    .breadcrumb-nav {
+        display: none !important;
+    }
+    .catalog-header-grid {
+        margin-bottom: 0.75rem;
+    }
+    .section-headline {
+        font-size: 1.35rem !important;
+    }
+    .catalog-section {
+        padding-top: 1.5rem !important;
+        padding-bottom: 3rem !important;
     }
     .usp-recognition-grid,
     .hero-cta-row,
@@ -3778,11 +3977,22 @@ html.js .faq-item[data-reveal].in:hover {
     .order-stepper {
         grid-template-columns: 1fr;
     }
+    .card-wish-icon-btn {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+    }
     .product-actions {
         grid-template-columns: 1fr 1fr;
+        gap: 8px;
     }
     .product-actions .btn-buy-now {
         grid-column: 1 / -1;
+        min-height: 46px;
+    }
+    .product-actions .btn-add-cart {
+        min-height: 44px;
     }
     .checkout-flow-steps {
         display: none;

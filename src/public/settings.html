@@ -350,20 +350,6 @@
             gap: 28px;
         }
 
-        @media (max-width: 860px) {
-            .settings-content-wrap {
-                grid-template-columns: 1fr;
-            }
-            .user-hero-card {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .user-stats-strip {
-                width: 100%;
-                justify-content: space-around;
-            }
-        }
-
         /* SIDEBAR NAV */
         .settings-nav {
             display: flex;
@@ -647,6 +633,80 @@
             color: var(--muted);
             margin-bottom: 24px;
             line-height: 1.6;
+        }
+
+        /* RESPONSIVE LAYOUT */
+        @media (max-width: 860px) {
+            .settings-content-wrap {
+                grid-template-columns: 1fr;
+            }
+            .user-hero-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .user-stats-strip {
+                width: 100%;
+                justify-content: space-around;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .settings-header {
+                padding: 12px 16px;
+            }
+            .user-hero-card {
+                padding: 18px 16px;
+                gap: 16px;
+                border-radius: var(--radius-md);
+            }
+            .user-avatar-lg {
+                width: 54px;
+                height: 54px;
+                font-size: 22px;
+            }
+            .user-main-info h1 {
+                font-size: 1.35rem;
+            }
+            .user-stats-strip {
+                padding-top: 12px;
+                gap: 12px;
+            }
+            .stat-value {
+                font-size: 16px;
+            }
+            /* Transform sidebar nav into horizontal scrollable tab bar */
+            .settings-content-wrap {
+                gap: 14px;
+                padding-top: 8px;
+            }
+            .settings-nav {
+                flex-direction: row !important;
+                overflow-x: auto;
+                padding-bottom: 6px;
+                gap: 8px;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+            }
+            .settings-nav::-webkit-scrollbar {
+                display: none;
+            }
+            .nav-tab-item {
+                white-space: nowrap;
+                padding: 9px 14px;
+                font-size: 13px;
+                border-radius: 20px;
+                flex-shrink: 0;
+            }
+            .nav-separator {
+                display: none;
+            }
+            .settings-panel-card {
+                padding: 20px 16px;
+                border-radius: var(--radius-md);
+            }
+            .guest-gate-card {
+                padding: 32px 18px;
+            }
         }
     </style>
 </head>
