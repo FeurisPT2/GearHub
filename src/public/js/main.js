@@ -1432,6 +1432,26 @@ function closeQrPaymentModal() {
 
 // ==================== 3. XÁC THỰC KHÁCH HÀNG & WISHLIST ====================
 
+function updateDrawerAccountUI(user) {
+  const guestCard = document.getElementById('drawer-guest-card');
+  const userCard = document.getElementById('drawer-user-card');
+  const nameEl = document.getElementById('drawer-user-name');
+  const initEl = document.getElementById('drawer-user-initial');
+  const roleEl = document.getElementById('drawer-user-role');
+
+  if (user) {
+    if (guestCard) guestCard.style.display = 'none';
+    if (userCard) userCard.style.display = 'flex';
+    const name = user.fullName || 'Khách';
+    if (nameEl) nameEl.innerText = name;
+    if (initEl) initEl.innerText = name.charAt(0).toUpperCase();
+    if (roleEl) roleEl.innerText = user.phone ? `SĐT: ${user.phone}` : (user.studentId ? `SV: ${user.studentId}` : 'Sinh viên HCMUS');
+  } else {
+    if (guestCard) guestCard.style.display = 'flex';
+    if (userCard) userCard.style.display = 'none';
+  }
+}
+
 async function checkAuthState() {
   try {
     const res = await fetch('/api/customers/profile');
@@ -1461,10 +1481,12 @@ async function checkAuthState() {
       if (cName && !cName.value) cName.value = data.fullName || '';
       if (cPhone && !cPhone.value) cPhone.value = data.phone || '';
       if (cAddress && !cAddress.value) cAddress.value = data.address || '';
+      updateDrawerAccountUI(currentUser);
     } else {
       currentUser = null;
       if (authBtn) authBtn.style.display = 'inline-flex';
       if (badge) badge.style.display = 'none';
+      updateDrawerAccountUI(null);
     }
   } catch {}
 }
@@ -1637,6 +1659,7 @@ async function logoutCustomer() {
     const authBtn = document.getElementById('btn-open-auth');
     if (badge) badge.style.display = 'none';
     if (authBtn) authBtn.style.display = 'inline-flex';
+    updateDrawerAccountUI(null);
     document.getElementById('order-form')?.reset();
     showToast('Đã đăng xuất tài khoản', 'info');
   }

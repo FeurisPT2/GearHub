@@ -75,12 +75,12 @@
                     <span id="wishlist-count-badge" class="nav-badge-pill" style="display:none;">0</span>
                 </button>
 
-                <a href="/login" class="nav-action-btn" id="btn-open-auth" onclick="if(event.ctrlKey||event.metaKey)return true; event.preventDefault(); openAuthModal('login');">
+                <a href="/login" class="nav-action-btn" id="btn-open-auth" onclick="if(event.ctrlKey||event.metaKey)return true; event.preventDefault(); openAuthModal('login');" title="Tài khoản sinh viên / Đăng nhập" aria-label="Tài khoản sinh viên">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                     <span class="nav-label">Đăng nhập</span>
                 </a>
 
-                <div class="user-profile-pill" id="user-profile-badge" style="display: none;">
+                <div class="user-profile-pill" id="user-profile-badge" style="display: none;" onclick="if(window.innerWidth<=640){window.location.href='/settings';}" title="Tài khoản cá nhân / Cài đặt" aria-label="Tài khoản sinh viên" role="button" tabindex="0">
                     <span class="user-avatar-dot" id="user-avatar-initial">K</span>
                     <button class="user-name-btn" id="user-display-name" onclick="openCustomerPortal('profile')">Khách</button>
                     <a href="/settings" class="user-settings-btn" id="btn-user-settings" title="Cài đặt tài khoản sinh viên" style="display:inline-flex; align-items:center; color:var(--muted); padding: 0 4px;">
@@ -116,21 +116,106 @@
 
     <!-- MOBILE DRAWER NAVIGATION -->
     <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" onclick="toggleMobileDrawer(false)"></div>
-    <aside class="mobile-drawer" id="mobile-drawer">
+    <aside class="mobile-drawer" id="mobile-drawer" aria-label="Menu điều hướng di động">
         <div class="mobile-drawer-header">
-            <span class="logo-brand">GearHub HCMUS</span>
-            <button class="close-btn" onclick="toggleMobileDrawer(false)">&times;</button>
+            <div class="drawer-header-brand">
+                <span class="logo-mark" aria-hidden="true" style="background:#1d4ed8; color:#fff; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <path d="M13 8l-4 5h3l-1 4 4-5h-3l1-4z" fill="currentColor"></path>
+                    </svg>
+                </span>
+                <span class="logo-brand">GearHub</span>
+            </div>
+            <button class="close-btn" onclick="toggleMobileDrawer(false)" aria-label="Đóng menu">&times;</button>
         </div>
+
+        <!-- MOBILE DRAWER ACCOUNT SPOTLIGHT CARD -->
+        <div class="drawer-account-section">
+            <div class="drawer-account-card drawer-account-guest" id="drawer-guest-card">
+                <div class="drawer-account-top">
+                    <div class="drawer-avatar-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="drawer-account-info">
+                        <span class="drawer-account-title">Tài khoản sinh viên</span>
+                        <span class="drawer-account-sub">Đăng nhập để xem lịch hẹn &amp; ưu đãi</span>
+                    </div>
+                </div>
+                <div class="drawer-account-bottom">
+                    <a href="/login" class="drawer-account-login-btn" onclick="toggleMobileDrawer(false);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                        <span>Đăng nhập / Đăng ký</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="drawer-account-card drawer-account-user" id="drawer-user-card" style="display:none;">
+                <div class="drawer-account-top">
+                    <div class="drawer-avatar-wrap drawer-avatar-initial" id="drawer-user-initial">K</div>
+                    <div class="drawer-account-info">
+                        <span class="drawer-account-title" id="drawer-user-name">Khách</span>
+                        <span class="drawer-account-sub" id="drawer-user-role">Sinh viên HCMUS</span>
+                    </div>
+                </div>
+                <div class="drawer-account-bottom">
+                    <div class="drawer-account-actions-row">
+                        <a href="/settings" class="drawer-action-btn" title="Cài đặt tài khoản" onclick="toggleMobileDrawer(false);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                            <span>Cài đặt</span>
+                        </a>
+                        <button type="button" class="drawer-action-btn drawer-action-btn-danger" onclick="logoutCustomer(); toggleMobileDrawer(false);" title="Đăng xuất">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                            <span>Thoát</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="mobile-drawer-body">
             <button class="drawer-item" onclick="toggleTheme();">
-                <span>Chế độ giao diện (Sáng / Tối):</span>
-                <strong id="theme-status-mobile" style="margin-left: 0.5rem; color: var(--accent-text);">Sáng</strong>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <span>Chế độ giao diện:</span>
+                <strong id="theme-status-mobile" style="margin-left:auto; color:var(--accent-text);">Sáng</strong>
             </button>
-            <button class="drawer-item" onclick="resetAllFilters(); toggleMobileDrawer(false);"> Bảng Dịch Vụ &amp; Thiết Bị</button>
-            <button class="drawer-item" onclick="openCustomerPortal('track'); toggleMobileDrawer(false);"> Tra Cứu Lịch Hẹn Trạm</button>
-            <button class="drawer-item" onclick="openCustomerPortal('orders'); toggleMobileDrawer(false);"> Lịch Hẹn Của Tôi</button>
-            <a href="/settings" class="drawer-item" onclick="toggleMobileDrawer(false);"> Cài Đặt Hồ Sơ Sinh Viên</a>
-            <button class="drawer-item" onclick="toggleAiChat(); toggleMobileDrawer(false);"> Trợ Lý Kỹ Thuật AI</button>
+
+            <p class="drawer-section-title">Dịch vụ &amp; Đặt hẹn</p>
+            <button class="drawer-item" onclick="resetAllFilters(); toggleMobileDrawer(false);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <span>Bảng Dịch Vụ &amp; Thiết Bị</span>
+            </button>
+            <button class="drawer-item" onclick="openCustomerPortal('track'); toggleMobileDrawer(false);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>Tra Cứu Lịch Hẹn Trạm</span>
+            </button>
+            <button class="drawer-item" onclick="openCustomerPortal('orders'); toggleMobileDrawer(false);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                <span>Lịch Hẹn Của Tôi</span>
+            </button>
+            <button class="drawer-item" onclick="openCustomerPortal('wishlist'); toggleMobileDrawer(false);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                <span>Danh Sách Đã Lưu</span>
+            </button>
+            <a href="/settings" class="drawer-item" onclick="toggleMobileDrawer(false);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                <span>Cài Đặt Hồ Sơ Sinh Viên</span>
+            </a>
+            <button class="drawer-item" onclick="toggleAiChat(); toggleMobileDrawer(false);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <span>Trợ Lý Kỹ Thuật AI</span>
+            </button>
+
             <p class="drawer-section-title">Danh mục trạm sảnh C</p>
             <div class="drawer-brand-grid">
                 <button onclick="filterByBrand('service'); toggleMobileDrawer(false);">Vệ sinh MX-4</button>
