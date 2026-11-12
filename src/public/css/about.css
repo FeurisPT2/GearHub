@@ -663,51 +663,6 @@ body.editorial-mode,
     line-height: 1.45;
 }
 
-/* Tech Stack Bento Grid */
-.tech-bento-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-}
-
-.tech-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.75rem;
-    box-shadow: var(--shadow-card);
-}
-
-.tech-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    display: block;
-}
-
-.tech-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 0.4rem;
-}
-
-.tech-role {
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: #2563eb;
-    margin-bottom: 0.75rem;
-    display: block;
-}
-
-[data-theme="dark"] .tech-role {
-    color: #60a5fa;
-}
-
-.tech-desc {
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: var(--muted);
-}
 
 /* Campus Location Banner */
 .campus-location-banner {
@@ -804,9 +759,6 @@ body.editorial-mode,
     .team-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    .tech-bento-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
     .campus-location-banner {
         grid-template-columns: 1fr;
     }
@@ -850,10 +802,6 @@ body.editorial-mode,
     .team-grid {
         grid-template-columns: 1fr 1fr;
         gap: 0.85rem;
-    }
-    .tech-bento-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
     }
     .campus-location-banner {
         padding: 1.75rem 1.25rem;
