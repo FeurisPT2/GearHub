@@ -197,6 +197,10 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                 <span>Đội Ngũ 5 Thành Viên Nhóm</span>
             </a>
+            <a href="#faq-section" class="drawer-item" onclick="toggleMobileDrawer(false);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <span>Câu Hỏi Thường Gặp (FAQ)</span>
+            </a>
             <button class="drawer-item" onclick="toggleAiChat(); toggleMobileDrawer(false);">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                 <span>Trợ Lý Kỹ Thuật AI</span>
@@ -513,6 +517,66 @@
         </section>
 
 
+        <!-- 5. FAQ - CÂU HỎI THƯỜNG GẶP VỀ GEARHUB -->
+        <section class="about-section faq-section" id="faq-section">
+            <div class="container">
+                <div class="faq-grid">
+                    <div class="faq-heading-col">
+                        <span class="about-badge" style="margin-bottom: 0.75rem;">
+                            <span class="badge-dot"></span>
+                            <span>Hỏi Đáp Nhanh</span>
+                        </span>
+                        <h2 class="section-title" style="margin-bottom: 0.75rem;">Câu hỏi thường gặp</h2>
+                        <p class="section-subtitle" style="margin-bottom: 1.5rem; text-wrap: balance;">
+                            Giải đáp nhanh về thủ tục thuê gear, dịch vụ vệ sinh lấy liền và quy trình trải nghiệm tại GearHub.
+                        </p>
+                    </div>
+
+                    <div class="faq-list-col">
+                        <details class="faq-item" open>
+                            <summary>
+                                <span>Sinh viên có cần đặt cọc tiền mặt khi thuê bàn phím cơ / chuột không?</span>
+                                <span class="faq-marker">+</span>
+                            </summary>
+                            <p class="faq-answer">Hoàn toàn không cần đặt cọc tiền mặt. Sinh viên chỉ cần xuất trình Thẻ Sinh Viên (hoặc VNeID) hợp lệ khi nhận thiết bị tại Sảnh C trường ĐHKHTN để làm thủ tục đối chiếu nhanh trong 1 phút.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>
+                                <span>Vệ sinh laptop mất bao lâu, tôi có phải để máy lại qua đêm không?</span>
+                                <span class="faq-marker">+</span>
+                            </summary>
+                            <p class="faq-answer">GearHub cam kết quy trình lấy liền trong 30-45 phút ngay tại sảnh trường. Bạn hoàn toàn có thể ngồi học bài hoặc quan sát kỹ thuật viên thao tác trực tiếp trước mặt.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>
+                                <span>Dữ liệu và linh kiện trong máy tính của tôi có được bảo mật không?</span>
+                                <span class="faq-marker">+</span>
+                            </summary>
+                            <p class="faq-answer">Kỹ thuật viên GearHub chỉ thao tác cơ học với quạt tản nhiệt và keo tản nhiệt, không can thiệp ổ cứng hay hệ điều hành của bạn. Thiết bị được kiểm tra tình trạng bật/tắt cùng sinh viên trước và sau khi làm.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>
+                                <span>Chế độ thanh toán thử nghiệm (Demo Sandbox) hoạt động ra sao?</span>
+                                <span class="faq-marker">+</span>
+                            </summary>
+                            <p class="faq-answer">Mọi thông tin đặt hàng, tạo mã đơn và cổng thanh toán QR đều chạy trên môi trường giả lập (Sandbox) để trải nghiệm quy trình nhanh gọn, không thu tiền thật của người dùng.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>
+                                <span>Trợ lý AI GearHub có thể tư vấn những nội dung gì?</span>
+                                <span class="faq-marker">+</span>
+                            </summary>
+                            <p class="faq-answer">Trợ lý AI được nạp dữ liệu về các dòng máy nóng phổ biến, các loại keo tản nhiệt (Arctic MX-4/MX-6), các loại switch phím cơ (Red, Brown, Dream Switch) để giúp sinh viên chọn giải pháp tối ưu cho túi tiền.</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 6. CAMPUS LOCATION & CALL TO ACTION -->
         <section class="about-section" id="location-section">
             <div class="container">
@@ -612,9 +676,10 @@
                 <h4 class="footer-col-title">Điều Hướng Nhanh</h4>
                 <ul class="footer-links">
                     <li><a href="/">Trang Giới Thiệu (About Us)</a></li>
+                    <li><a href="#faq-section">Câu Hỏi Thường Gặp (FAQ)</a></li>
                     <li><a href="/shop">Gian Hàng GearHub (/shop)</a></li>
-                    <li><a href="/shop#catalog-section">Bảng Dịch Vụ Vệ Sinh</a></li>
-                    <li><a href="/shop#catalog-section">Thiết Bị Cho Thuê</a></li>
+                    <li><a href="/shop?category=service">Bảng Dịch Vụ Vệ Sinh</a></li>
+                    <li><a href="/shop?category=rental">Thiết Bị Cho Thuê</a></li>
                 </ul>
             </div>
 

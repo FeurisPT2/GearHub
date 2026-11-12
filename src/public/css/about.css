@@ -748,8 +748,98 @@ body.editorial-mode,
     color: var(--muted);
 }
 
+/* FAQ Section for Editorial Homepage */
+.editorial-mode .faq-section {
+    padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+    position: relative;
+}
+
+.editorial-mode .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2.5rem;
+}
+
+.editorial-mode .faq-heading-col {
+    grid-column: 1 / 5;
+}
+
+.editorial-mode .faq-list-col {
+    grid-column: 5 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.editorial-mode .faq-item {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.15rem 1.4rem;
+    box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.04);
+    cursor: pointer;
+    transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, background-color 200ms ease;
+}
+
+.editorial-mode .faq-item:hover {
+    border-color: var(--border-strong);
+    background-color: var(--surface-raised);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.08);
+}
+
+.editorial-mode .faq-item[open] {
+    border-color: var(--border-strong);
+    background-color: var(--surface);
+}
+
+.editorial-mode .faq-item summary {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: normal;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.editorial-mode .faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.editorial-mode .faq-marker {
+    font-size: 1.35rem;
+    color: var(--accent-text);
+    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    flex-shrink: 0;
+}
+
+.editorial-mode .faq-item[open] .faq-marker {
+    transform: rotate(45deg);
+}
+
+.editorial-mode .faq-answer {
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--muted);
+}
+
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
+    .editorial-mode .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+    .editorial-mode .faq-heading-col,
+    .editorial-mode .faq-list-col {
+        grid-column: 1 / -1;
+    }
     .about-metrics-grid {
         grid-template-columns: repeat(2, 1fr);
     }
