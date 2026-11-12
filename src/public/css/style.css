@@ -255,26 +255,13 @@ a {
     white-space: nowrap;
 }
 
+/* Top Navigation Links stay consistently visible and never hide on focus/click */
 .top-nav-links {
     display: flex;
     align-items: center;
     gap: 0.35rem;
     flex-shrink: 0;
-    max-width: 320px;
-    overflow: hidden;
     white-space: nowrap;
-    transition: max-width 360ms cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 240ms ease,
-                margin 360ms ease;
-}
-
-.header-inner:focus-within .top-nav-links,
-.header-inner.search-active .top-nav-links {
-    max-width: 0;
-    opacity: 0;
-    margin: 0;
-    padding: 0;
-    pointer-events: none;
 }
 
 .top-nav-link {
@@ -434,7 +421,6 @@ a {
     white-space: nowrap;
 }
 
-.header-inner:focus-within .header-actions .nav-label,
 .header-inner.search-active .header-actions .nav-label {
     max-width: 0;
     opacity: 0;
