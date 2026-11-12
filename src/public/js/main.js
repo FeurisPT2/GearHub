@@ -968,6 +968,23 @@ function observeReveals() {
 
 // ==================== 6. MODAL CHI TIẾT SẢN PHẨM & ĐÁNH GIÁ AI ====================
 
+function switchDetailTab(tabName) {
+  if (typeof document === 'undefined') return;
+  const isSpecs = tabName === 'specs';
+  const tabSpecs = document.getElementById('detail-tab-specs');
+  const tabAi = document.getElementById('detail-tab-ai');
+  const paneSpecs = document.getElementById('detail-pane-specs');
+  const paneAi = document.getElementById('detail-pane-ai');
+
+  if (tabSpecs) tabSpecs.classList.toggle('active', isSpecs);
+  if (tabAi) tabAi.classList.toggle('active', !isSpecs);
+  if (paneSpecs) paneSpecs.classList.toggle('active', isSpecs);
+  if (paneAi) paneAi.classList.toggle('active', !isSpecs);
+}
+if (typeof window !== 'undefined') {
+  window.switchDetailTab = switchDetailTab;
+}
+
 async function openProductDetailModal(productId) {
   let p = allProducts.find((item) => String(item.id) === String(productId));
   if (!p) {
@@ -988,6 +1005,7 @@ async function openProductDetailModal(productId) {
   }
 
   if (typeof document === 'undefined') return;
+  switchDetailTab('specs');
   const fmt = typeof formatMoney === 'function' ? formatMoney : (v) => v + ' ₫';
 
   document.getElementById('detail-modal-title').innerText = p.name;
@@ -1182,8 +1200,11 @@ if (typeof document !== 'undefined') {
       }
     }
 
-    if (typeof openCartModal === 'function') {
-      document.getElementById('btn-open-cart')?.addEventListener('click', openCartModal);
+    const btnOpenCart = document.getElementById('btn-open-cart');
+    if (btnOpenCart && btnOpenCart.tagName !== 'A') {
+      btnOpenCart.addEventListener('click', () => {
+        window.location.href = '/cart';
+      });
     }
     if (typeof handlePlaceOrder === 'function') {
       document.getElementById('order-form')?.addEventListener('submit', handlePlaceOrder);

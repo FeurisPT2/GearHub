@@ -354,17 +354,17 @@ test('Storefront main.js and Admin admin.js have valid syntax, 0 dead pass-throu
 
   const mainJsPath = path.join(__dirname, '..', 'src', 'public', 'js', 'main.js');
   const adminJsPath = path.join(__dirname, '..', 'src', 'public', 'js', 'admin.js');
-  const indexHtmlPath = path.join(__dirname, '..', 'src', 'public', 'index.html');
-  const shopHtmlPath = path.join(__dirname, '..', 'src', 'public', 'shop.html');
-  const adminHtmlPath = path.join(__dirname, '..', 'src', 'public', 'admin.html');
-  const loginHtmlPath = path.join(__dirname, '..', 'src', 'public', 'login.html');
 
   const mainCode = fs.readFileSync(mainJsPath, 'utf8');
   const adminCode = fs.readFileSync(adminJsPath, 'utf8');
-  const indexHtml = fs.readFileSync(indexHtmlPath, 'utf8');
-  const shopHtml = fs.readFileSync(shopHtmlPath, 'utf8');
-  const adminHtml = fs.readFileSync(adminHtmlPath, 'utf8');
-  const loginHtml = fs.readFileSync(loginHtmlPath, 'utf8');
+  const adminHtml = fs.readFileSync(path.join(__dirname, '..', 'src', 'public', 'admin.html'), 'utf8');
+  const loginHtml = fs.readFileSync(path.join(__dirname, '..', 'src', 'public', 'login.html'), 'utf8');
+
+  const htmlFiles = ['index.html', 'shop.html', 'cart.html', 'admin.html', 'login.html'];
+  const htmlContents = htmlFiles.map((f) => ({
+    name: f,
+    code: fs.readFileSync(path.join(__dirname, '..', 'src', 'public', f), 'utf8')
+  }));
 
   // Verify clean JS syntax across all modular client scripts
   const jsDir = path.join(__dirname, '..', 'src', 'public', 'js');
@@ -386,8 +386,9 @@ test('Storefront main.js and Admin admin.js have valid syntax, 0 dead pass-throu
       false,
       `Dead alias ${fnName} must be deleted from main.js`
     );
-    assert.equal(indexHtml.includes(fnName), false, `index.html must not reference deleted alias ${fnName}`);
-    assert.equal(shopHtml.includes(fnName), false, `shop.html must not reference deleted alias ${fnName}`);
+    htmlContents.forEach(({ name, code }) => {
+      assert.equal(code.includes(fnName), false, `${name} must not reference deleted alias ${fnName}`);
+    });
   }
 
   // Verify 14 dead aliases deleted from admin.js

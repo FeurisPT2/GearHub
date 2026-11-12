@@ -221,7 +221,7 @@ function renderRevenueChart(labels, values) {
           grid: { color: '#f0f0ec' },
           ticks: {
             color: '#575752',
-            font: { family: 'Work Sans', size: 12 },
+            font: { family: 'Be Vietnam Pro', size: 12 },
             callback: (val) => (val >= 1000000 ? val / 1000000 + ' tr' : formatMoney(val))
           }
         },
@@ -229,7 +229,7 @@ function renderRevenueChart(labels, values) {
           grid: { display: false },
           ticks: {
             color: '#575752',
-            font: { family: 'Work Sans', size: 12 }
+            font: { family: 'Be Vietnam Pro', size: 12 }
           }
         }
       }
@@ -266,7 +266,7 @@ function renderStatusChart(counts) {
           labels: {
             boxWidth: 10,
             color: '#141413',
-            font: { family: 'Work Sans', size: 12 }
+            font: { family: 'Be Vietnam Pro', size: 12 }
           }
         }
       },
@@ -719,7 +719,7 @@ function printOrderInvoice() {
     .join('');
 
   printArea.innerHTML = `
-    <div style="max-width:800px; margin:0 auto; padding:24px; color:#000; font-family:'Work Sans',sans-serif;">
+    <div style="max-width:800px; margin:0 auto; padding:24px; color:#000; font-family:'Be Vietnam Pro',sans-serif;">
       <div style="display:flex; justify-content:space-between; border-bottom:2px solid #000; padding-bottom:12px; margin-bottom:20px;">
         <div>
           <h2 style="margin:0;">TECHSTORE ATELIER · PHIẾU BÁN HÀNG</h2>

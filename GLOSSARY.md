@@ -104,6 +104,19 @@ _Avoid_: Homepage, intro page, splash screen
 Trang bán lẻ và cho thuê thiết bị trực tuyến chuyên biệt (đường dẫn `/shop`, alias `/store`), tích hợp đầy đủ bộ lọc danh mục, chi tiết cấu hình, giỏ hàng, thanh toán mô phỏng VietQR Sandbox, cổng tự phục vụ khách hàng và trợ lý AI Shopping Consultant.
 _Avoid_: Main page, catalog view, product list
 
+**GearHub Station Signboard**:
+Bảng hiệu nhận diện trạm dịch vụ tại Sảnh C trường ĐHKHTN đặt tại đầu trang chủ (`/`), hiển thị rõ ràng thông tin trạm, cam kết dịch vụ lấy liền 30–45 phút và thời gian tiếp nhận sinh viên.
+_Avoid_: Header banner, hero ad, billboard
+
+**Dedicated Multi-Page Architecture**:
+Kiến trúc định tuyến phân tách rõ ràng 5 trang chức năng độc lập (`/` - Trang chủ bảng hiệu & Vì sao làm, `/services` - Trạm Dịch vụ vệ sinh & spa máy, `/rentals` - Trạm Cho thuê gear học tập bằng thẻ SV, `/shop` - Gian hàng phụ kiện mua đứt, `/features` - Trang Giới thiệu tính năng & công nghệ đồ án), xóa bỏ hoàn toàn hiện tượng nhồi nhét nội dung trên một trang đơn lẻ.
+_Avoid_: Monolithic SPA, bloated page, all-in-one catalog
+
+**Tri-Tier Cart**:
+Thành phần giỏ hàng thông minh phân tách rạch ròi 3 nhóm mục trong một phiên giao dịch: Lịch hẹn dịch vụ (có chọn ca hẹn tại sảnh trường), Thiết bị thuê (có chọn số buổi/ngày và áp dụng chính sách 0đ tiền cọc qua thẻ SV), và Phụ kiện mua đứt (có điều chỉnh số lượng).
+_Avoid_: Single cart list, checkout basket
+
+
 
 
 

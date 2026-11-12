@@ -47,9 +47,23 @@ app.get(['/login', '/login.html', '/admin/login'], (req, res) => {
   return res.sendFile(path.join(__dirname, 'src', 'public', 'login.html'));
 });
 
-// Điều hướng Cửa Hàng Bán Lẻ & Thuê Thiết Bị (Storefront)
+// Gộp chung Dịch vụ và Cho thuê vào Cửa Hàng (/shop)
+app.get(['/services', '/services.html'], (req, res) => {
+  return res.redirect('/shop?category=service');
+});
+
+app.get(['/rentals', '/rentals.html', '/rental', '/rental.html'], (req, res) => {
+  return res.redirect('/shop?category=rental');
+});
+
+// Điều hướng Cửa Hàng Tổng Hợp (Dịch vụ, Cho thuê & Phụ kiện)
 app.get(['/shop', '/shop.html', '/store', '/store.html'], (req, res) => {
   return res.sendFile(path.join(__dirname, 'src', 'public', 'shop.html'));
+});
+
+// Bỏ trang Chức năng: Điều hướng về Cửa Hàng
+app.get(['/features', '/features.html'], (req, res) => {
+  return res.redirect('/shop');
 });
 
 // Điều hướng Cổng Khách Hàng (Customer Self-Service Portal)
@@ -60,6 +74,11 @@ app.get('/customer-portal', (req, res) => {
 // Điều hướng Trang Cài Đặt Khách Hàng / Hồ Sơ Sinh Viên (Customer Settings Page)
 app.get(['/settings', '/settings.html', '/profile', '/profile.html', '/user-settings'], (req, res) => {
   return res.sendFile(path.join(__dirname, 'src', 'public', 'settings.html'));
+});
+
+// Điều hướng Trang Giỏ Hàng & Lịch Hẹn (/cart)
+app.get(['/cart', '/cart.html', '/checkout', '/checkout.html'], (req, res) => {
+  return res.sendFile(path.join(__dirname, 'src', 'public', 'cart.html'));
 });
 
 // Điều hướng & bảo vệ truy cập trang Admin
