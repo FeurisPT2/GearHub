@@ -81,6 +81,11 @@ app.get(['/cart', '/cart.html', '/checkout', '/checkout.html'], (req, res) => {
   return res.sendFile(path.join(__dirname, 'src', 'public', 'cart.html'));
 });
 
+// Điều hướng Trang Prototype Frontend (/prototype)
+app.get(['/prototype', '/prototype.html'], (req, res) => {
+  return res.sendFile(path.join(__dirname, 'src', 'public', 'prototype.html'));
+});
+
 // Điều hướng & bảo vệ truy cập trang Admin
 app.use(async (req, res, next) => {
   if (req.path === '/admin' || req.path === '/admin.html') {
