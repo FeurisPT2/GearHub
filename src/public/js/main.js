@@ -6,7 +6,7 @@ const FINISH_DATA = {
   clean: {
     label: 'Dịch vụ Vệ sinh Laptop Lấy liền',
     alt: 'Vệ sinh tản nhiệt laptop sinh viên GearHub',
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=1200&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1721332154191-ba5f1534266e?w=1200&auto=format&fit=crop&q=80',
     headline: 'Combo Sinh Viên Cool & Clean',
     desc: 'Hút sạch bụi quạt tản nhiệt, tra keo gốm Arctic MX-4, hạ ngay 10–15°C khi compile code hoặc render đồ họa. Hoàn thành nhanh 30–45 phút tại sảnh trường.',
     price: '79.000 ₫',
@@ -34,7 +34,7 @@ const FINISH_DATA = {
   mouse: {
     label: 'Thuê Chuột Silent Công Thái Học',
     alt: 'Thuê chuột không dây công thái học chống mỏi cổ tay',
-    image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=1200&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1656457538054-b5c0d11d895d?w=1200&auto=format&fit=crop&q=80',
     headline: 'Chuột Công Thái Học Silent Chống Mỏi',
     desc: 'Form ôm sát lòng bàn tay chống mỏi cổ tay khi gõ code dài hạn. Click bấm Silent êm ái hoàn toàn không gây ồn thư viện hay phòng KTX.',
     price: '15.000 ₫ / ngày',
@@ -48,7 +48,7 @@ const FINISH_DATA = {
   slide: {
     label: 'Combo Thiết Bị Thuyết Trình Điểm A',
     alt: 'Hub chuyển đổi máy chiếu Type-C HDMI VGA',
-    image: 'https://images.unsplash.com/photo-1544652478-6653e09f18a2?w=1200&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1616578273461-3a99ce422de6?w=1200&auto=format&fit=crop&q=80',
     headline: 'Combo Hub Type-C & Bút Trình Chiếu',
     desc: 'Hub đa năng HDMI 4K + VGA tương thích 100% máy chiếu giảng đường ĐHKHTN, kèm bút laser đỏ lật slide nhạy bén.',
     price: '20.000 ₫ / buổi',
@@ -62,7 +62,7 @@ const FINISH_DATA = {
   natural: {
     label: 'Dịch vụ Vệ sinh Laptop Lấy liền',
     alt: 'GearHub Spa Laptop',
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=1200&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1721332154191-ba5f1534266e?w=1200&auto=format&fit=crop&q=80',
     headline: 'Combo Sinh Viên Cool & Clean',
     desc: 'Hút sạch bụi quạt, tra keo gốm Arctic MX-4, hạ ngay 10–15°C khi compile code.',
     price: '79.000 ₫',
@@ -125,7 +125,7 @@ const BENCH_MODELS = [
     brand: 'GearHub Dịch Vụ',
     finish: 'Keo Gốm Arctic MX-4 · Lấy Liền 30-45P',
     specBase: 'Hút bụi quạt tản · Giảm 10-15°C · Test HWMonitor',
-    image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=1200&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1721332154191-ba5f1534266e?w=1200&auto=format&fit=crop&q=80',
     basePrice: 79000,
     saving: 40000,
     capacities: [
@@ -139,7 +139,7 @@ const BENCH_MODELS = [
     brand: 'GearHub Cho Thuê',
     finish: 'Gasket Mount · Dream Switch Âm Trầm',
     specBase: 'Layout 75% · Cáp Type-C bọc dù · Không cọc tiền mặt',
-    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=1200&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=1200&auto=format&fit=crop&q=80',
     basePrice: 25000,
     saving: 10000,
     capacities: [
@@ -153,7 +153,7 @@ const BENCH_MODELS = [
     brand: 'GearHub Cho Thuê',
     finish: 'Công Thái Học 57° · Silent Switch Siêu Êm',
     specBase: 'Pin sạc Type-C · Dùng phòng thư viện · Không cọc',
-    image: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=1200&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1656457538054-b5c0d11d895d?w=1200&auto=format&fit=crop&q=80',
     basePrice: 15000,
     saving: 5000,
     capacities: [
