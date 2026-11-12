@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
 /* ==========================================================================
    TECHSTORE - Variant B: Calm Editorial Studio (design-taste-frontend v2)
    Tasteskill direction: split-stage / Typeface: Be Vietnam Pro / Bone & Stone
@@ -4979,11 +4981,11 @@ body.is-searching .active-filter-chips {
 
 .signboard-title {
     font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-    font-weight: 800;
+    font-weight: 700;
     color: #ffffff;
-    line-height: 1.2;
+    line-height: 1.25;
     margin: 0 0 0.5rem;
-    letter-spacing: -0.02em;
+    letter-spacing: normal;
 }
 
 .signboard-subtitle {
