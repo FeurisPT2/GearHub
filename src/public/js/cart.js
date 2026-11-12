@@ -234,21 +234,23 @@ function renderCartPage(cart, total) {
   } = partitionCartTiers(cart);
 
   const renderPageItemRow = (i) => `
-    <div class="cart-item" style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.95rem 1rem; border-bottom: 1px solid var(--border); background: var(--surface);">
-      <div class="cart-item-info" style="display: flex; align-items: center; gap: 0.85rem; min-width: 0; flex: 1;">
-        <img class="cart-item-img" src="${i.image || ''}" alt="${i.name}" loading="lazy" style="width: 52px; height: 52px; object-fit: contain; border-radius: 6px; border: 1px solid var(--border); background: var(--surface-raised); padding: 3px; flex-shrink: 0;">
-        <div style="min-width: 0;">
-          <div class="cart-item-title" style="font-size: 0.925rem; font-weight: 600; color: var(--ink); line-height: 1.35;">${i.name}</div>
-          <div class="cart-item-price" style="font-size: 0.8125rem; color: var(--muted); margin-top: 3px;">
+    <div class="cart-item">
+      <div class="cart-item-info">
+        <img class="cart-item-img" src="${i.image || ''}" alt="${i.name}" loading="lazy">
+        <div class="cart-item-body">
+          <div class="cart-item-title">${i.name}</div>
+          <div class="cart-item-price">
             ${fmt(i.price)} &times; ${i.quantity} = <strong style="color: var(--ink); font-variant-numeric: tabular-nums;">${fmt(i.price * i.quantity)}</strong>
           </div>
         </div>
       </div>
-      <div class="cart-item-controls" style="display: flex; align-items: center; gap: 0.45rem; flex-shrink: 0;">
-        <button type="button" class="qty-btn" onclick="updateCartQty('${i.id}', ${i.quantity - 1})" title="Giảm số lượng" style="width: 28px; height: 28px; border-radius: 4px; border: 1px solid var(--border-strong); background: var(--surface-raised); color: var(--ink); font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;">-</button>
-        <span class="tabular" style="min-width: 1.5rem; text-align: center; font-size: 0.875rem; font-weight: 700; color: var(--ink);">${i.quantity}</span>
-        <button type="button" class="qty-btn" onclick="updateCartQty('${i.id}', ${i.quantity + 1})" title="Tăng số lượng" style="width: 28px; height: 28px; border-radius: 4px; border: 1px solid var(--border-strong); background: var(--surface-raised); color: var(--ink); font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;">+</button>
-        <button type="button" class="btn-remove" onclick="removeCartItem('${i.id}')" title="Xóa khỏi giỏ" style="margin-left: 0.5rem; background: none; border: none; color: var(--muted); font-size: 0.8125rem; cursor: pointer; text-decoration: underline;">Xóa</button>
+      <div class="cart-item-controls">
+        <div class="cart-qty-stepper">
+          <button type="button" class="qty-btn" onclick="updateCartQty('${i.id}', ${i.quantity - 1})" title="Giảm số lượng" aria-label="Giảm số lượng">-</button>
+          <span class="tabular qty-count">${i.quantity}</span>
+          <button type="button" class="qty-btn" onclick="updateCartQty('${i.id}', ${i.quantity + 1})" title="Tăng số lượng" aria-label="Tăng số lượng">+</button>
+        </div>
+        <button type="button" class="btn-remove" onclick="removeCartItem('${i.id}')" title="Xóa khỏi giỏ" aria-label="Xóa sản phẩm">Xóa</button>
       </div>
     </div>
   `;
