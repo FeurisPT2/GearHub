@@ -1,12 +1,14 @@
 {
-  "5": "dependencies",
-  "12": "catalogFilter.js",
-  "14": "storageSeam.js",
-  "15": "AdminModel",
-  "16": "orderRoutes.js",
-  "17": "express",
-  "21": "scripts",
-  "25": "package.json",
-  "26": "express-session",
-  "27": "adminRoutes.js"
+  "0": "main.js",
+  "1": "CustomerModel",
+  "9": "server.js",
+  "10": "customerPortal.js",
+  "11": "ProductModel",
+  "12": "storageSeam.test.js",
+  "13": "OrderModel",
+  "17": "utils.js",
+  "20": "AdminModel",
+  "36": "cart.js",
+  "40": "qrPayment.js",
+  "41": "aiChat.js"
 }

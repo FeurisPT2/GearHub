@@ -364,9 +364,12 @@ test('Storefront main.js and Admin admin.js have valid syntax, 0 dead pass-throu
   const adminHtml = fs.readFileSync(adminHtmlPath, 'utf8');
   const loginHtml = fs.readFileSync(loginHtmlPath, 'utf8');
 
-  // Verify clean JS syntax
-  assert.doesNotThrow(() => new vm.Script(mainCode, { filename: 'main.js' }));
-  assert.doesNotThrow(() => new vm.Script(adminCode, { filename: 'admin.js' }));
+  // Verify clean JS syntax across all modular client scripts
+  const jsDir = path.join(__dirname, '..', 'src', 'public', 'js');
+  ['utils.js', 'qrPayment.js', 'cart.js', 'customerPortal.js', 'aiChat.js', 'main.js', 'admin.js', 'catalogFilter.js'].forEach((f) => {
+    const code = fs.readFileSync(path.join(jsDir, f), 'utf8');
+    assert.doesNotThrow(() => new vm.Script(code, { filename: f }), `Syntax error in ${f}`);
+  });
 
   // Verify 4 dead aliases deleted from main.js
   const deletedMainAliases = [
