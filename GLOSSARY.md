@@ -96,5 +96,14 @@ _Avoid_: Cookie login, session hack, token bypass
 Mô hình dịch vụ công nghệ tại chỗ phục vụ sinh viên (đặt tại Sảnh C, 227 Nguyễn Văn Cừ, ĐHKHTN ĐHQG-HCM), cung cấp dịch vụ vệ sinh máy tính lấy liền trong 30-45 phút và cho thuê phụ kiện/thiết bị học tập không cần cọc tiền mặt (áp dụng thủ tục thẻ sinh viên).
 _Avoid_: Phone shop, mobile store, tech workshop
 
+**About Us Landing Page**:
+Trang đích giới thiệu đồ án GearHub (đường dẫn `/`), hiển thị thông tin học phần CSC00004 - Nhập môn CNTT (Khoa CNTT - ĐHKHTN ĐHQG-HCM), sứ mệnh giải quyết sự cố thiết bị cho sinh viên, showcase các dịch vụ cốt lõi, hồ sơ đội ngũ 5 thành viên sáng lập và kiến trúc công nghệ kèm lời kêu gọi hành động (CTA) dẫn sang GearHub Storefront.
+_Avoid_: Homepage, intro page, splash screen
+
+**GearHub Storefront**:
+Trang bán lẻ và cho thuê thiết bị trực tuyến chuyên biệt (đường dẫn `/shop`, alias `/store`), tích hợp đầy đủ bộ lọc danh mục, chi tiết cấu hình, giỏ hàng, thanh toán mô phỏng VietQR Sandbox, cổng tự phục vụ khách hàng và trợ lý AI Shopping Consultant.
+_Avoid_: Main page, catalog view, product list
+
+
 
 

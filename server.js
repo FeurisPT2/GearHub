@@ -36,6 +36,9 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Tránh lỗi 404 cho favicon khi trình duyệt tự động request
+app.get('/favicon.ico', (req, res) => res.status(204).end());
+
 // Điều hướng Cổng Đăng Nhập tập trung
 app.get(['/login', '/login.html', '/admin/login'], (req, res) => {
   if (req.session && req.session.admin) {
@@ -44,9 +47,14 @@ app.get(['/login', '/login.html', '/admin/login'], (req, res) => {
   return res.sendFile(path.join(__dirname, 'src', 'public', 'login.html'));
 });
 
+// Điều hướng Cửa Hàng Bán Lẻ & Thuê Thiết Bị (Storefront)
+app.get(['/shop', '/shop.html', '/store', '/store.html'], (req, res) => {
+  return res.sendFile(path.join(__dirname, 'src', 'public', 'shop.html'));
+});
+
 // Điều hướng Cổng Khách Hàng (Customer Self-Service Portal)
 app.get('/customer-portal', (req, res) => {
-  return res.sendFile(path.join(__dirname, 'src', 'public', 'index.html'));
+  return res.sendFile(path.join(__dirname, 'src', 'public', 'shop.html'));
 });
 
 // Điều hướng Trang Cài Đặt Khách Hàng / Hồ Sơ Sinh Viên (Customer Settings Page)
