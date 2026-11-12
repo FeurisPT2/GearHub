@@ -55,7 +55,7 @@ const FINISH_DATA = {
     specs: [
       { k: 'Tương thích', v: 'HDMI 4K + VGA máy chiếu' },
       { k: 'Phụ kiện', v: 'Bút laser lật slide từ xa' },
-      { k: 'Ứng dụng', v: 'Báo cáo đồ án / Seminar' },
+      { k: 'Ứng dụng', v: 'Báo cáo, Seminar & Hội thảo' },
       { k: 'Thủ tục', v: 'Thẻ SV lấy ngay tại sảnh' }
     ]
   },
