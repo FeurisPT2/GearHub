@@ -15,7 +15,11 @@
     "vercel:deploy": "node ./node_modules/vercel/dist/index.js --prod"
   },
   "dependencies": {
+    "@astryxdesign/cli": "^0.7.16",
+    "@astryxdesign/core": "^0.7.16",
+    "@astryxdesign/theme-neutral": "^0.7.16",
     "@google/genai": "^3.0.0",
+    "@stylexjs/stylex": "^0.19.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^18.0.7",
