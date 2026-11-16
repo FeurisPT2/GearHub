@@ -32,6 +32,7 @@
     <script type="importmap">
       {
         "imports": {
+          "/": "https://esm.sh/",
           "react": "https://esm.sh/react@19.2.0",
           "react/jsx-runtime": "https://esm.sh/react@19.2.0/jsx-runtime",
           "react-dom": "https://esm.sh/react-dom@19.2.0",
@@ -102,35 +103,35 @@
           category: 'service',
           price: '79.000₫',
           tag: 'Lấy Liền 30-45p',
-          image: '/images/products/laptop-spa.jpg',
+          image: 'https://images.unsplash.com/photo-1721332154191-ba5f1534266e?w=800&auto=format&fit=crop&q=80',
           desc: 'Tra keo Arctic MX-4, thổi bụi quạt tản nhiệt, giảm 5-10°C tức thì cho mùa đồ án tại Sảnh C.'
         },
         {
           id: 'p2',
-          name: 'Bàn Phím Cơ Aula F75 Tri-Mode',
+          name: 'Thuê Bàn Phím Cơ 3-Mode (DAREU / Flex 75)',
           category: 'rental',
           price: '20.000₫ / ngày',
           tag: '0đ Cọc MSSV',
-          image: '/images/products/aula-f75.jpg',
+          image: 'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=800&auto=format&fit=crop&q=80',
           desc: 'Gasket mount, switch êm ái thích hợp gõ code tại giảng đường hoặc phòng KTX.'
         },
         {
           id: 'p3',
-          name: 'Chuột Không Dây Logitech MX Master 3S',
+          name: 'Thuê Chuột Không Dây Công Thái Học & Gaming',
           category: 'rental',
           price: '25.000₫ / ngày',
           tag: '0đ Cọc MSSV',
-          image: '/images/products/mx-master-3s.jpg',
-          desc: 'Cuộn vô cực MagSpeed, kết nối đa thiết bị, công thái học hỗ trợ đồ họa và lập trình.'
+          image: 'https://images.unsplash.com/photo-1656457538054-b5c0d11d895d?w=800&auto=format&fit=crop&q=80',
+          desc: 'Cảm biến quang học chính xác cao, switch silent không gây ồn trong thư viện và lớp học.'
         },
         {
           id: 'p4',
-          name: 'Hub Type-C 8-in-1 Baseus Metal Gleam',
+          name: 'Combo Thuyết Trình Hub Type-C + Bút Slide',
           category: 'rental',
           price: '15.000₫ / ngày',
           tag: 'Hỗ Trợ Thuyết Trình',
-          image: '/images/products/baseus-hub.jpg',
-          desc: 'Cổng HDMI 4K kết nối máy chiếu hội trường, sạc PD 100W, khe cắm SD & cổng LAN Gigabit.'
+          image: 'https://images.unsplash.com/photo-1616578273461-3a99ce422de6?w=800&auto=format&fit=crop&q=80',
+          desc: 'Cổng HDMI 4K kết nối máy chiếu hội trường, sạc PD 100W, kèm bút trình chiếu laser đỏ.'
         }
       ];
 
@@ -202,19 +203,19 @@
                 <${HStack} gap=${2}>
                   <${Button}
                     variant=${activeTab === 'catalog' ? 'primary' : 'ghost'}
-                    label="Prototype Cửa Hàng & Danh Mục"
+                    label="1. Prototype Cửa Hàng & Thuê Gear"
                     onClick=${() => setActiveTab('catalog')}
-                  >1. Prototype Cửa Hàng & Thuê Gear<//>
+                  />
                   <${Button}
                     variant=${activeTab === 'booking' ? 'primary' : 'ghost'}
-                    label="Prototype Đặt Lịch Sảnh C"
+                    label="2. Prototype Đặt Lịch Lấy Liền"
                     onClick=${() => setActiveTab('booking')}
-                  >2. Prototype Đặt Lịch Lấy Liền<//>
+                  />
                   <${Button}
                     variant=${activeTab === 'components' ? 'primary' : 'ghost'}
-                    label="Thư Viện Astryx Components"
+                    label="3. Astryx UI Showcase"
                     onClick=${() => setActiveTab('components')}
-                  >3. Astryx UI Showcase<//>
+                  />
                 <//>
               <//>
 
@@ -246,11 +247,11 @@
                             class="product-img"
                             onError=${e => { e.target.src = 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&auto=format&fit=crop&q=80'; }}
                           />
-                          <${HStack} justify="space-between" style=${{ width: '100%' }}>
-                            <${Text} style=${{ fontSize: '0.8rem', fontWeight: 700, color: '#2563eb' }}>
+                          <${HStack} justify="space-between" align="center" style=${{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px', marginBottom: '4px' }}>
+                            <${Text} style=${{ fontSize: '0.8rem', fontWeight: 700, color: '#2563eb', background: 'rgba(37, 99, 235, 0.08)', padding: '2px 8px', borderRadius: '4px', letterSpacing: '0.02em' }}>
                               ${product.tag}
                             </${Text}>
-                            <${Text} style=${{ fontSize: '1.1rem', fontWeight: 800 }}>
+                            <${Text} style=${{ fontSize: '1.15rem', fontWeight: 800, marginLeft: 'auto' }}>
                               ${product.price}
                             </${Text}>
                           <//>
@@ -401,10 +402,10 @@
                         Các biến thể nút bấm chuẩn trong thư viện Astryx Core với kích thước và trạng thái tương tác:
                       </${Text}>
                       <${HStack} gap=${2} wrap="wrap">
-                        <${Button} variant="primary" label="Primary">Primary Action<//>
-                        <${Button} variant="secondary" label="Secondary">Secondary Action<//>
-                        <${Button} variant="ghost" label="Ghost">Ghost Button<//>
-                        <${Button} variant="danger" label="Danger">Danger Action<//>
+                        <${Button} variant="primary" label="Primary Action" />
+                        <${Button} variant="secondary" label="Secondary Action" />
+                        <${Button} variant="ghost" label="Ghost Button" />
+                        <${Button} variant="destructive" label="Destructive Action" />
                       <//>
                     <//>
                   <//>
