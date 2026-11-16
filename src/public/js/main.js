@@ -707,10 +707,10 @@ function renderProductCardHtml(p, idx) {
         </button>
       </div>
 
-      <div class="product-img-wrapper" onclick="openProductDetailModal('${p.id}')">
+      <a href="/product?id=${p.id}" class="product-img-wrapper" style="text-decoration:none; display:block;">
         <img class="product-img" src="${p.image}" alt="${p.name}" loading="lazy" decoding="async">
         <span class="card-quickview-pill">Xem chi tiết &amp; AI tư vấn</span>
-      </div>
+      </a>
 
       <div class="product-body">
         <div class="product-meta-row">
@@ -718,7 +718,7 @@ function renderProductCardHtml(p, idx) {
           <span class="product-stock-tag"><span class="trust-dot" style="display:inline-block; vertical-align:middle; margin-right:4px;"></span>${durationTag}</span>
         </div>
 
-        <div class="product-title" onclick="openProductDetailModal('${p.id}')" title="${p.name}">${p.name}</div>
+        <a href="/product?id=${p.id}" class="product-title" title="${p.name}" style="text-decoration:none; color:inherit; display:block;">${p.name}</a>
 
         ${specPillsHtml}
 
@@ -736,7 +736,7 @@ function renderProductCardHtml(p, idx) {
         <div class="product-actions">
           <button type="button" class="btn-buy-now" onclick="buyNow('${p.id}')" title="${catMeta.key === 'rental' ? 'Thuê thiết bị ngay' : (catMeta.key === 'service' ? 'Đặt lịch vệ sinh lấy liền' : 'Mua ngay')}">${catMeta.key === 'rental' ? 'Thuê ngay' : (catMeta.key === 'service' ? 'Đặt lịch ngay' : 'Mua ngay')}</button>
           <button type="button" class="btn-add-cart" onclick="addToCart('${p.id}')" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</button>
-          <button type="button" class="btn-add-cart" onclick="openProductDetailModal('${p.id}')" title="Xem chi tiết &amp; thông số">Chi tiết</button>
+          <a href="/product?id=${p.id}" class="btn-add-cart" title="Xem chi tiết &amp; thông số" style="text-decoration:none;">Chi tiết</a>
         </div>
       </div>
     </article>
@@ -1043,6 +1043,10 @@ async function openProductDetailModal(productId) {
     detailCartBtn.onclick = () => {
       if (typeof addToCart === 'function') addToCart(p.id);
     };
+  }
+  const detailFullPageBtn = document.getElementById('detail-btn-fullpage');
+  if (detailFullPageBtn) {
+    detailFullPageBtn.href = `/product?id=${encodeURIComponent(p.id)}`;
   }
 
   const GEARHUB_SPEC_LABELS = {

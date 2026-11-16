@@ -61,6 +61,11 @@ app.get(['/shop', '/shop.html', '/store', '/store.html'], (req, res) => {
   return res.sendFile(path.join(__dirname, 'src', 'public', 'shop.html'));
 });
 
+// Điều hướng Trang Chi Tiết Sản Phẩm & Dịch Vụ (/product)
+app.get(['/product', '/product.html', '/product/:id', '/item', '/item.html'], (req, res) => {
+  return res.sendFile(path.join(__dirname, 'src', 'public', 'product.html'));
+});
+
 // Bỏ trang Chức năng: Điều hướng về Cửa Hàng
 app.get(['/features', '/features.html'], (req, res) => {
   return res.redirect('/shop');

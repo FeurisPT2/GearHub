@@ -76,4 +76,16 @@ describe('Seam 1: HTTP Streamlined Routing & Navigation Indicators', () => {
     assert.ok(body.includes('cart-page-section'), 'Cart page must contain cart-page-section');
     assert.ok(body.includes('order-form'), 'Cart page must contain appointment booking order form');
   });
+
+  test('GET /product serves dedicated Product Detail Page with breadcrumbs, specs, and actions', async () => {
+    const res = await fetch(`${baseUrl}/product?id=gearhub_clean_cool`);
+    assert.equal(res.status, 200);
+    assert.match(res.headers.get('content-type'), /text\/html/);
+
+    const body = await res.text();
+    assert.ok(body.includes('pdp-container'), 'Product page must contain pdp-container');
+    assert.ok(body.includes('pdp-hero-grid'), 'Product page must contain pdp-hero-grid');
+    assert.ok(body.includes('pdp-tabs-section'), 'Product page must contain pdp-tabs-section');
+    assert.match(body, /<a href="\/shop" class="top-nav-link active-nav">Cửa hàng<\/a>/);
+  });
 });
