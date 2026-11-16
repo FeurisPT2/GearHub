@@ -2627,24 +2627,25 @@ html.js .product-card[data-reveal].in:hover {
 
 .product-actions {
     display: grid;
-    grid-template-columns: 1.3fr 1fr auto;
-    gap: 0.45rem;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 0.35rem;
     margin-top: 0.35rem;
 }
 
 .btn-buy-now {
-    padding: 0.72rem 0.9rem;
+    padding: 0.72rem 0.5rem;
     background-color: var(--ink);
     border: 1px solid var(--ink);
     border-radius: var(--radius-sm);
     color: var(--surface);
-    font-size: var(--fs-sm);
+    font-size: 0.8rem;
     font-weight: 600;
     text-align: center;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
+    white-space: nowrap;
     transition: opacity 180ms ease, transform 180ms ease;
 }
 
@@ -2654,17 +2655,18 @@ html.js .product-card[data-reveal].in:hover {
 }
 
 .btn-add-cart {
-    padding: 0.72rem 0.75rem;
+    padding: 0.72rem 0.45rem;
     background-color: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     color: var(--ink);
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.3rem;
+    white-space: nowrap;
     transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
 }
 
@@ -4883,9 +4885,12 @@ html.js .faq-item[data-reveal].in:hover {
     .product-actions .btn-buy-now {
         grid-column: 1 / -1;
         min-height: 46px;
+        font-size: 0.9375rem;
     }
     .product-actions .btn-add-cart {
         min-height: 44px;
+        font-size: 0.84rem;
+        padding: 0.6rem 0.4rem;
     }
     .checkout-flow-steps {
         display: none;
