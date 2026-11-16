@@ -734,9 +734,9 @@ function renderProductCardHtml(p, idx) {
         </div>
 
         <div class="product-actions">
-          <button type="button" class="btn-buy-now" onclick="buyNow('${p.id}')">Đặt lịch / Thuê ngay</button>
-          <button type="button" class="btn-add-cart" onclick="addToCart('${p.id}')" title="Thêm vào danh sách đặt">+ Đặt lịch</button>
-          <button type="button" class="btn-add-cart" onclick="openProductDetailModal('${p.id}')" title="Xem chi tiết">Chi tiết</button>
+          <button type="button" class="btn-buy-now" onclick="buyNow('${p.id}')" title="${catMeta.key === 'rental' ? 'Thuê thiết bị ngay' : (catMeta.key === 'service' ? 'Đặt lịch vệ sinh lấy liền' : 'Mua ngay')}">${catMeta.key === 'rental' ? 'Thuê ngay' : (catMeta.key === 'service' ? 'Đặt lịch ngay' : 'Mua ngay')}</button>
+          <button type="button" class="btn-add-cart" onclick="addToCart('${p.id}')" title="${catMeta.key === 'rental' ? 'Thêm vào danh sách thuê gear' : (catMeta.key === 'service' ? 'Thêm vào danh sách đặt lịch' : 'Thêm vào giỏ hàng')}">${catMeta.key === 'rental' ? '+ Thuê' : (catMeta.key === 'service' ? '+ Đặt lịch' : '+ Giỏ')}</button>
+          <button type="button" class="btn-add-cart" onclick="openProductDetailModal('${p.id}')" title="Xem chi tiết &amp; thông số">Chi tiết</button>
         </div>
       </div>
     </article>
@@ -1023,13 +1023,33 @@ async function openProductDetailModal(productId) {
     oldPriceEl.style.display = 'none';
   }
 
-  document.getElementById('detail-btn-buy').onclick = () => {
-    closeProductDetailModal();
-    if (typeof buyNow === 'function') buyNow(p.id);
-  };
-  document.getElementById('detail-btn-cart').onclick = () => {
-    if (typeof addToCart === 'function') addToCart(p.id);
-  };
+  const detailBuyBtn = document.getElementById('detail-btn-buy');
+  const detailCartBtn = document.getElementById('detail-btn-cart');
+  if (detailBuyBtn) {
+    if (detailCatMeta.key === 'rental') {
+      detailBuyBtn.innerHTML = 'Thuê Thiết Bị Ngay &rarr;';
+    } else if (detailCatMeta.key === 'service') {
+      detailBuyBtn.innerHTML = 'Đặt Lịch Hẹn Ngay &rarr;';
+    } else {
+      detailBuyBtn.innerHTML = 'Mua Sản Phẩm Ngay &rarr;';
+    }
+    detailBuyBtn.onclick = () => {
+      closeProductDetailModal();
+      if (typeof buyNow === 'function') buyNow(p.id);
+    };
+  }
+  if (detailCartBtn) {
+    if (detailCatMeta.key === 'rental') {
+      detailCartBtn.innerHTML = '+ Thêm Vào Thuê';
+    } else if (detailCatMeta.key === 'service') {
+      detailCartBtn.innerHTML = '+ Thêm Đặt Lịch';
+    } else {
+      detailCartBtn.innerHTML = '+ Thêm Vào Giỏ';
+    }
+    detailCartBtn.onclick = () => {
+      if (typeof addToCart === 'function') addToCart(p.id);
+    };
+  }
 
   const GEARHUB_SPEC_LABELS = {
     type: 'Hạng mục',

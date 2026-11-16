@@ -681,7 +681,7 @@ async function renderPortalWishlistTab() {
             <strong style="font-size: 0.9375rem;">${p.name}</strong>
             <span class="tabular" style="color: var(--accent-text); font-weight: 600;">${fmt(p.price)}</span>
             <div style="display: flex; gap: 0.5rem; margin-top: auto;">
-              <button type="button" class="btn-buy-now" style="flex: 1; padding: 0.5rem;" onclick="closeCustomerPortal(); buyNow('${p.id}')">Mua ngay</button>
+              <button type="button" class="btn-buy-now" style="flex: 1; padding: 0.5rem;" onclick="closeCustomerPortal(); buyNow('${p.id}')">${p.category === 'rental' ? 'Thuê ngay' : (p.category === 'service' ? 'Đặt lịch' : 'Mua ngay')}</button>
               <button type="button" class="btn-remove" onclick="toggleWishlistItem('${p.id}')">Xóa</button>
             </div>
           </div>
